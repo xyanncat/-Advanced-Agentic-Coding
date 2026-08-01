@@ -1,47 +1,65 @@
 <div align="center">
-  <h1>🧠 llm-trainer</h1>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=llm-trainer&fontSize=60&fontAlignY=35&animation=twinkling&fontColor=ffffff" alt="Header Image">
+  
   <p><b>Universal, Hardware-Agnostic, and Memory-Adaptive LLM Training Framework</b></p>
 
   <p>
-    <a href="https://github.com/xyanncat/-Advanced-Agentic-Coding/releases"><img src="https://img.shields.io/github/v/release/xyanncat/-Advanced-Agentic-Coding?style=flat-square&color=blue" alt="Release"></a>
-    <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.9+-blue.svg?style=flat-square" alt="Python 3.9+"></a>
-    <a href="https://github.com/xyanncat/-Advanced-Agentic-Coding/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License"></a>
-    <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.0+-red.svg?style=flat-square&logo=pytorch" alt="PyTorch"></a>
+    <a href="https://github.com/xyanncat/-Advanced-Agentic-Coding/releases"><img src="https://img.shields.io/github/v/release/xyanncat/-Advanced-Agentic-Coding?style=for-the-badge&color=8A2BE2" alt="Release"></a>
+    <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/Python-3.9+-blue.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.9+"></a>
+    <a href="https://github.com/xyanncat/-Advanced-Agentic-Coding/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License"></a>
+    <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.0+-EE4C2C.svg?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch"></a>
   </p>
 </div>
 
-A production-ready framework for fine-tuning, preference-aligning, and training Large Language Models (LLMs), Vision-Language Models (VLMs), and Encoder/Decoder architectures across any machine.
+> A production-ready framework for fine-tuning, preference-aligning, and training Large Language Models (LLMs), Vision-Language Models (VLMs), and Encoder/Decoder architectures across any machine.
 
 From **8GB RAM local laptops** up to **NVIDIA Grace Hopper / DGX SuperPOD clusters**, `llm-trainer` dynamically adapts to your hardware so you never see an Out-Of-Memory (OOM) error again.
 
----
+<br>
 
 ## ✨ Key Features
 
+<table>
+<tr>
+<td width="50%" valign="top">
+  
 ### 🖥️ Universal Hardware Support
 No more writing custom CUDA scripts. `llm-trainer` automatically detects and optimizes for:
-- **NVIDIA GPUs & Grace CPUs**: CUDA, FlashAttention-2, FP8 TransformerEngine, DeepSpeed ZeRO-3, FSDP.
-- **Apple Silicon (Mac M1/M2/M3)**: Metal Performance Shaders (`mps`), unified memory optimizations.
-- **ARM CPUs**: Neoverse V2, Graviton, Ampere Altra with NEON/SVE vectorization & bfloat16.
-- **AMD GPUs & APUs**: ROCm / HIP PyTorch engine & SDPA attention.
-- **Intel/AMD Integrated APUs**: DirectML / CPU offloading.
+- 🟩 **NVIDIA GPUs & Grace CPUs**: CUDA, FlashAttention-2, FP8, DeepSpeed ZeRO-3, FSDP.
+- 🍎 **Apple Silicon (M1/M2/M3)**: MPS, unified memory optimizations.
+- ⚡ **ARM CPUs**: Neoverse V2, Graviton, Ampere Altra (NEON/SVE).
+- 🔴 **AMD GPUs & APUs**: ROCm / HIP & SDPA attention.
+- 💻 **Integrated APUs**: DirectML / CPU offloading.
 
-### 🧠 Dynamic Memory Adaptation (8GB RAM to 128GB+ RAM)
-Auto-profiles System RAM and GPU VRAM to dynamically set batch sizes, sequence lengths, gradient accumulation steps, and CPU offloading. 
+</td>
+<td width="50%" valign="top">
 
 ### 🚀 Advanced Training Techniques
-- **SFT (Supervised Fine-Tuning)** with **Sequence Packing** for a 2-3x throughput boost.
-- **GRPO (Group Relative Policy Optimization)** for modern RLHF (DeepSeek-R1 style).
-- **PPO (Proximal Policy Optimization)** for classical RLHF.
-- **DPO (Direct Preference Optimization)** for alignment without reward models.
-- **PEFT / LoRA / QLoRA / TorchAO** for parameter-efficient fine-tuning on consumer hardware.
+- 📈 **SFT** with **Sequence Packing** (2-3x throughput boost).
+- 🧠 **GRPO** for modern RLHF (DeepSeek-R1 style).
+- 🎯 **PPO** for classical RLHF.
+- ⚖️ **DPO** for alignment without reward models.
+- 🛠️ **PEFT / LoRA / QLoRA / TorchAO** for efficiency on consumer hardware.
 
-### 📊 Observability & Evaluation
-- Built-in **WandB** and **TensorBoard** logging callbacks.
-- Built-in **LM Evaluation Harness** for zero-shot/few-shot benchmarking (MMLU, HellaSwag, GSM8K).
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
-### 📦 Production Exporting
-- Full pipeline to export and quantize to **GGUF format** for local inference via `llama.cpp`, `ollama`, or `LM Studio`.
+### 🧠 Dynamic Memory Adaptation
+Auto-profiles System RAM and GPU VRAM to dynamically set batch sizes, sequence lengths, gradient accumulation steps, and CPU offloading. Seamlessly scales from **8GB RAM to 128GB+ RAM**.
+
+</td>
+<td width="50%" valign="top">
+
+### 📊 Observability & 📦 Exporting
+- 📈 Built-in **WandB** & **TensorBoard** logging.
+- 🧪 **LM Eval Harness** (MMLU, HellaSwag, GSM8K).
+- 💾 Export & quantize to **GGUF format** for `llama.cpp`, `ollama`, or `LM Studio`.
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -128,23 +146,30 @@ python -m llm_trainer.cli export-gguf \
 
 ## 📂 Directory Layout
 
+<details open>
+<summary><b>Click to expand project structure</b></summary>
+<br>
+
 ```text
 .
-├── configs/                  # YAML configurations (SFT, DPO, GRPO, Eval, Export)
-├── src/llm_trainer/          # Core package source code
-│   ├── config.py             # Pydantic configuration schema
-│   ├── cli.py                # Command-line interface
-│   ├── utils/                # Hardware detection, memory logic, logging
-│   ├── models/               # Model factories & PEFT adapters
-│   ├── data/                 # Datasets & sequence packing processors
-│   ├── trainers/             # SFT, DPO, GRPO, PPO training loops
-│   ├── evaluators/           # EleutherAI eval harness integration
-│   └── exporters/            # llama.cpp GGUF conversion & quantization
-└── tests/                    # 20+ passing Pytest unit tests
+├── 📁 configs/                  # YAML configurations (SFT, DPO, GRPO, Eval, Export)
+├── 📁 src/llm_trainer/          # Core package source code
+│   ├── 📄 config.py             # Pydantic configuration schema
+│   ├── 📄 cli.py                # Command-line interface
+│   ├── 📁 utils/                # Hardware detection, memory logic, logging
+│   ├── 📁 models/               # Model factories & PEFT adapters
+│   ├── 📁 data/                 # Datasets & sequence packing processors
+│   ├── 📁 trainers/             # SFT, DPO, GRPO, PPO training loops
+│   ├── 📁 evaluators/           # EleutherAI eval harness integration
+│   └── 📁 exporters/            # llama.cpp GGUF conversion & quantization
+└── 📁 tests/                    # 20+ passing Pytest unit tests
 ```
+</details>
 
 ---
 
 <div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer" alt="Footer Image">
+  <br>
   <i>Built for the modern AI engineering era. Open-source and hardware-agnostic.</i>
 </div>
