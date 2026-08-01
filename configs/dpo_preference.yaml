@@ -1,0 +1,23 @@
+model:
+  model_name_or_path: "HuggingFaceTB/SmolLM-135M"
+  task_type: "dpo"
+  torch_dtype: "auto"
+
+dataset:
+  dataset_name_or_path: "Intel/orca_dpo_pairs"
+  chosen_field: "chosen"
+  rejected_field: "rejected"
+  train_split: "train"
+  max_seq_length: 512
+
+peft:
+  use_peft: true
+  lora_r: 8
+  lora_alpha: 16
+
+training:
+  output_dir: "./output_dpo"
+  learning_rate: 0.00005
+  num_train_epochs: 1.0
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8

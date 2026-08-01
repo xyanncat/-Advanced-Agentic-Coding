@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-trainer"
+version = "0.1.0"
+description = "Universal, Hardware-Agnostic, Memory-Adaptive LLM Training Framework"
+readme = "README.md"
+authors = [{ name = "LLM Training Team" }]
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.38.0",
+    "peft>=0.9.0",
+    "trl>=0.8.0",
+    "accelerate>=0.27.0",
+    "datasets>=2.16.0",
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "psutil>=5.9.0",
+]
+
+[project.optional-dependencies]
+cuda = ["bitsandbytes>=0.42.0", "flash-attn>=2.5.0"]
+rocm = ["bitsandbytes>=0.42.0"]
+low-mem = ["torchao>=0.1.0"]
+dev = ["pytest>=7.0.0", "black", "isort", "flake8"]
+
+[project.scripts]
+llm-trainer = "llm_trainer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

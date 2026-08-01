@@ -1,0 +1,24 @@
+model:
+  model_name_or_path: "google-bert/bert-base-uncased"
+  task_type: "classification"
+  torch_dtype: "float32"
+  quantization_bit: null
+
+dataset:
+  dataset_name_or_path: "imdb"
+  text_field: "text"
+  train_split: "train"
+  eval_split: "test"
+  max_seq_length: 256
+
+peft:
+  use_peft: false
+
+training:
+  output_dir: "./output_bert_imdb"
+  learning_rate: 0.00002
+  num_train_epochs: 2.0
+  per_device_train_batch_size: 16
+  gradient_accumulation_steps: 1
+  logging_steps: 20
+  save_steps: 100

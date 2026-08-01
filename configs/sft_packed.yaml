@@ -1,0 +1,35 @@
+# SFT with Sequence Packing enabled — eliminates padding waste for ~2-3x throughput
+model:
+  model_name_or_path: "HuggingFaceTB/SmolLM-135M"
+  task_type: "causal_lm"
+  torch_dtype: "auto"
+  quantization_bit: 4
+
+dataset:
+  dataset_name_or_path: "tatsu-lab/alpaca"
+  prompt_field: "instruction"
+  response_field: "output"
+  max_seq_length: 1024
+  chat_template: "alpaca"
+  use_sequence_packing: true   # ← enables packing
+
+peft:
+  use_peft: true
+  lora_r: 8
+  lora_alpha: 16
+
+training:
+  output_dir: "./output_packed"
+  learning_rate: 0.0002
+  num_train_epochs: 1.0
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  gradient_checkpointing: true
+
+logging:
+  enabled: true
+  backend: "tensorboard"
+  tensorboard_dir: "./runs/packed_sft"
+
+hardware:
+  auto_adapt_memory: true

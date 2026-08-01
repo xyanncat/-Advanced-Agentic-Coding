@@ -1,0 +1,41 @@
+# Configuration optimized for low-resource local machines (8GB RAM / Low VRAM / CPU)
+model:
+  model_name_or_path: "HuggingFaceTB/SmolLM-135M"
+  task_type: "causal_lm"
+  torch_dtype: "auto"
+  quantization_bit: 4
+  use_flash_attention: false
+  trust_remote_code: true
+
+dataset:
+  dataset_name_or_path: "tatsu-lab/alpaca"
+  text_field: "text"
+  prompt_field: "instruction"
+  response_field: "output"
+  train_split: "train"
+  streaming: false
+  max_seq_length: 512
+  chat_template: "alpaca"
+
+peft:
+  use_peft: true
+  peft_type: "LORA"
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+
+training:
+  output_dir: "./output_sft_low_mem"
+  learning_rate: 0.0002
+  num_train_epochs: 1.0
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  gradient_checkpointing: true
+  fp16: false
+  bf16: false
+  logging_steps: 5
+  save_steps: 20
+
+hardware:
+  auto_adapt_memory: true
+  device_target: "auto"
