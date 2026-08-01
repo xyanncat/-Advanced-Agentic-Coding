@@ -14,7 +14,7 @@ dependencies = [
     "torch>=2.0.0",
     "transformers>=4.38.0",
     "peft>=0.9.0",
-    "trl>=0.8.0",
+    "trl>=0.12.0",
     "accelerate>=0.27.0",
     "datasets>=2.16.0",
     "pydantic>=2.0.0",
@@ -26,7 +26,13 @@ dependencies = [
 cuda = ["bitsandbytes>=0.42.0", "flash-attn>=2.5.0"]
 rocm = ["bitsandbytes>=0.42.0"]
 low-mem = ["torchao>=0.1.0"]
+eval = ["lm-eval>=0.4.0"]
+logging = ["wandb", "tensorboard"]
 dev = ["pytest>=7.0.0", "black", "isort", "flake8"]
+all = [
+    "bitsandbytes>=0.42.0", "flash-attn>=2.5.0", "torchao>=0.1.0", 
+    "lm-eval>=0.4.0", "wandb", "tensorboard"
+]
 
 [project.scripts]
 llm-trainer = "llm_trainer.cli:main"
